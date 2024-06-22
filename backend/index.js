@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(express.json());
 
-app.use("/api/auth", );
+app.use("/api/auth", authRoutes);
 
 mongoose.connect(process.env.MONGODB_URI, {
 }).then(() => {

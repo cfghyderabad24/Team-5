@@ -1,10 +1,24 @@
 import mongoose from 'mongoose';
 
 const frontlinerSchema = new mongoose.Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+    name: {
+        type: String,
         required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String
+    },
+    role: {
+        type: String,
+        default: 'frontliner'
+    },
+    phoneNo:{
+        type:String,
+        required:true
     },
     projects: {
         type: [{
@@ -14,7 +28,7 @@ const frontlinerSchema = new mongoose.Schema({
         default: []
     },
     doc_uploaded: {
-        type: [File],
+        type: [String],
         default: []
     },
     reminders: {
