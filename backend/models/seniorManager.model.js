@@ -30,7 +30,8 @@ const seniorManagerSchema = new mongoose.Schema({
     reminders: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Reminder'
+            ref: 'Reminder',
+            default: []
         }
     ],
     frontliners: {

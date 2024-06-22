@@ -16,16 +16,17 @@ const generalManagerSchema = new mongoose.Schema({
         type: String,
         default: 'general manager'
     },
-    phoneNo:{
-        type:String,
-        required:true
-    },
-    reminders:
-    {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Reminder',
+    phoneNo: {
+        type: String,
         required: true
-    }
+    },
+    reminders: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Reminder',
+            default: []
+        }
+    ]
 })
 const GeneralManager = mongoose.model('generalManager', generalManagerSchema);
 export default GeneralManager;
