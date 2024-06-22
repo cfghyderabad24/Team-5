@@ -69,9 +69,9 @@ export const updateFieldVisit = async (req, res) => {
         if (!project) {
             return res.status(404).send();
         }
-        project.status = req.body.fieldVisit;
+        project.dueDates.annualReviewVisit.status = 'Fulfilled';
         await project.save();
-        res.status(200).send(project);
+        return res.status(200).send(project);
     } catch (error) {
         res.status(400).send(error);
     }

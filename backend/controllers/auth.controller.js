@@ -58,7 +58,7 @@ export const loginController = async (req, res) => {
         const token = jwt.sign({ id: frontliner._id, userType: "frontliner" }, process.env.JWT_SECRET);
         return res.status(200).cookie("access_token", token, {
             httpOnly: true,
-        }).json({ message: "Frontliner logged in successfully", frontliner });
+        }).json({ message: "Frontliner logged in successfully", id: frontliner._id, role: "frontliner" });
     } else if (role === "senior manager") {
         let seniorManager = await SeniorManager.findOne({ email });
         if (!seniorManager) {
@@ -71,7 +71,7 @@ export const loginController = async (req, res) => {
         const token = jwt.sign({ id: seniorManager._id, userType: "senior manager" }, process.env.JWT_SECRET);
         return res.status(200).cookie("access_token", token, {
             httpOnly: true,
-        }).json({ message: "Senior Manager logged in successfully", seniorManager });
+        }).json({ message: "Senior Manager logged in successfully", id: seniorManager._id, role: "senior manager" });
     } else if (role === "general manager") {
         let generalManager = await GeneralManager.findOne({ email });
         if (!generalManager) {
@@ -84,6 +84,6 @@ export const loginController = async (req, res) => {
         const token = jwt.sign({ id: generalManager._id, userType: "general manager" }, process.env.JWT_SECRET);
         return res.status(200).cookie("access_token", token, {
             httpOnly: true,
-        }).json({ message: "General Manager logged in successfully", generalManager });
+        }).json({ message: "General Manager logged in successfully", id: generalManager._id, role: "general manager" });
     }
 }
