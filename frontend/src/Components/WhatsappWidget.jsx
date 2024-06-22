@@ -7,8 +7,8 @@ const WhatsappWidget = () => {
     <div style={{ position: 'relative', zIndex: 9999 }}>
       {/* Your app content */}
       <WhatsAppWidget 
-        phoneNumber="+918801103053"
-        message="Welcome to SS Tax Mentors! How can we help you?"
+        phoneNumber="+919115911500"
+        message="Welcome to CRY! How can we help you?"
         position="right"
         size="large" // Set size to large
         className="custom-whatsapp-widget" // Add custom class name

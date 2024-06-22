@@ -26,11 +26,11 @@ module.exports =withMT({
     },
     extend: {
       colors: {
-        brightRed: 'hsl(227, 96%, 47%)',
-        brightRedLight: 'hsl(227, 100%, 73%)',
-        brightRedSupLight: 'hsl(227, 100%, 73%)',
+        brightRed: 'hsl(52, 96%, 47%)',
+        brightRedLight: 'hsl(52, 100%, 73%)',
+        brightRedSupLight: 'hsl(52, 100%, 73%)',
         darkBlue: 'hsl(228, 39%, 23%)',
-        darkGrayishBlue: 'hsl(227, 12%, 61%)',
+        darkGrayishBlue: 'hsl(52, 12%, 61%)',
         veryDarkBlue: 'hsl(233, 12%, 13%)',
         veryPaleRed: 'hsl(13, 100%, 96%)',
         veryLightGray: 'hsl(0, 0%, 98%)',
