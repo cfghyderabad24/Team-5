@@ -104,10 +104,11 @@ const Dashboard = () => {
               <SidebarItem
                 icon={<Building2 />}
                 text="My Projects"
-                dropdownItems={[
-                  { text: "Add Company", to: "add-company" },
-                  { text: "View Company", to: "view-company" },
-                ]}
+                to="projects"
+                // dropdownItems={[
+                //   { text: "Add Company", to: "add-company" },
+                //   { text: "View Company", to: "view-company" },
+                // ]}
               />
             )}
             {/* Notification
@@ -150,11 +151,11 @@ const Dashboard = () => {
             {!showPayments && (
               <SidebarItem
                 icon={<Files size={20} />}
-                text="Uploaded Documents"
+                text="Documents"
                 dropdownItems={[
                   { text: "KYC", to: "KYC" },
                   { text: "GST Registration", to: "gstregistration" },
-                  { text: "GST Returns", to: "gstreturns" },
+                  { text: "Upload Documents", to: "uploaddocuments" },
                   { text: "IT Returns", to: "itreturns" },
                   { text: "ROC Filings", to: "rocfilings" },
                   { text: "License", to: "license" },

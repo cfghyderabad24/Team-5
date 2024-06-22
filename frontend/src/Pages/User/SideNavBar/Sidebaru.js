@@ -19,10 +19,7 @@ import MyLogo from "../../../Images/cryLogo.jpeg";
 
 const MyProfile = lazy(() => import("../Profile/MyProfile"));
 const AddCompanyForm = lazy(() => import("../Company/AddCompany"));
-const CreateSupportTicket = lazy(() => import("../SupportTicket/CreateSupportTicket"));
-const MyTickets = lazy(() => import("../SupportTicket/MyTickets"));
 const Reminder = lazy(() => import("../Reminder/Reminder"));
-const Notifications = lazy(() => import("../Notification/Notifications"));
 const GSTNotice = lazy(() => import("../../../Components/User/GSTNotice"));
 const ITreturns = lazy(() => import("../Document/ITReturns/ITreturns"));
 const GSTReturns = lazy(() => import("../../../Components/User/GSTReturnsUser"));
@@ -41,7 +38,7 @@ const AddOnServicesPage = lazy(() => import("../AddOnServices/AddOnServices"));
 const HomePageUser = lazy(() => import("../Home/HomePageUser"));
 const ViewAddOnServices = lazy(() => import("../AddOnServices/ViewAddOnServices"));
 const HistoryPage = lazy(() => import("../../../Components/User/HistoryU"));
-const Payment = lazy(() => import("../Payment/PendingPayments"));
+const Project = lazy(() => import("../projectPage/Project"));
 
 // Create context for sidebar state
 const SidebarContext = createContext();
@@ -137,6 +134,7 @@ function UserSidebar({ children }) {
                   expanded ? "w-60" : "w-0"
                 }`}
                 alt=""
+                style={{height: '70px', width: '120px'}}
               />
               <button
                 onClick={toggleSidebar}
@@ -166,19 +164,16 @@ function UserSidebar({ children }) {
               <Route path="/myprofile" element={<MyProfile />} />
               <Route path="/add-company" element={<AddCompanyForm />} />
               <Route path="/view-company" element={<ViewCompany />} />
-              <Route path="/add-ticket" element={<CreateSupportTicket />} />
-              <Route path="/view-ticket" element={<MyTickets />} />
               <Route path="/reminders" element={<Reminder />} />
-              <Route path="/notifications" element={<Notifications />} />
               <Route path="/itreturns" element={<ITreturns />} />
               <Route path="/KYC" element={<KYC />} />
               <Route path="/gstreturns" element={<GSTReturns />} />
               <Route path="/gstnotice" element={<GSTNotice />} />
-              <Route path="/gstregistration" element={<GSTRegistration />} />
+              <Route path="/uploaddocuments" element={<uploadDocuments />} />
+              <Route path="/projects" element={<Project />} />
               <Route path="/rocfilings" element={<ROCfilings />} />
               <Route path="/cma" element={<CMApreparation />} />
               <Route path="/license" element={<Licenses />} />
-              <Route path="/payments" element={<Payment />} />
               <Route path="/payment-history" element={<PaymentHistory />} />
               <Route path="/AddOnServices" element={<AddOnServicesPage />} />
               <Route
