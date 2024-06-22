@@ -25,11 +25,9 @@ import AddCompany from "../Clients/AddCompany";
 const ViewKYC = lazy(() => import("../Documents/KYC/ViewKYC"));
 const EmployeeAttendance = lazy(() => import("../Employee/Employeeattendance"));
 const ViewBills = lazy(() => import("../Invoice/InvoiceHistory"));
-const Notification = lazy(() => import("../Notification/Notification"));
 const Reminder = lazy(() => import("../Reminder/Reminder"));
 const AddClient = lazy(() => import("../Clients/AddClient"));
 const ViewClient = lazy(() => import("../Clients/ViewClient"));
-const SupportTicket = lazy(() => import("../SupportTicket/SupportTicket"));
 const AddEmployee = lazy(() => import("../Employee/AddEmployee"));
 const ManageEmployees = lazy(() => import("../Employee/ViewEmployee"));
 const GSTNoticeA = lazy(() => import("../Documents/GSTNotice/SendGSTNotice"));
@@ -193,13 +191,11 @@ function Sidebar({ children }) {
           {/* Routing for sidebar components */}
           <Routes>
             <Route path="/" element={<MainCompo />} />
-            <Route path="/notificationsa" element={<Notification />} />
             <Route path="/remindersa" element={<Reminder />} />
             <Route path="/add-client" element={<AddClient />} />
             <Route path="/View-client" element={<ViewClient />} />
             <Route path="/View-employee" element={<ManageEmployees />} />
             <Route path="/add-employee" element={<AddEmployee />} />
-            <Route path="/support-ticketa" element={<SupportTicket />} />
             <Route path="/gstreturnsa" element={<GSTreturns />} />
             <Route path="/viewgstreturnsa" element={<ViewGSTReturns />} />
             <Route path="/createinvoice" element={<CreateInvoice />} />

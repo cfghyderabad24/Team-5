@@ -29,6 +29,9 @@ export function StepperWithContent() {
         <Step onClick={() => setActiveStep(3)}>
           <CogIcon className="h-7 w-7" />
         </Step>
+        <Step onClick={() => setActiveStep(4)}>
+          <CogIcon className="h-7 w-7" />
+        </Step>
       </Stepper>
       <div className="mt-16 flex justify-between">
         <Button onClick={handlePrev} disabled={isFirstStep}>
