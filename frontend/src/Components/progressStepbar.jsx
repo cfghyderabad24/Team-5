@@ -18,19 +18,19 @@ export function StepperWithContent() {
         isFirstStep={(value) => setIsFirstStep(value)}
       >
         <Step onClick={() => setActiveStep(0)}>
-          <HomeIcon className="h-7 w-7" />
+          {/* <HomeIcon className="h-7 w-7" /> */}
         </Step>
         <Step onClick={() => setActiveStep(1)}>
-          <UserIcon className="h-7 w-7" />
+          {/* <UserIcon className="h-7 w-7" /> */}
         </Step>
         <Step onClick={() => setActiveStep(2)}>
-          <CogIcon className="h-7 w-7" />
+          {/* <CogIcon className="h-7 w-7" /> */}
         </Step>
         <Step onClick={() => setActiveStep(3)}>
-          <CogIcon className="h-7 w-7" />
+          {/* <CogIcon className="h-7 w-7" /> */}
         </Step>
         <Step onClick={() => setActiveStep(4)}>
-          <CogIcon className="h-7 w-7" />
+          {/* <CogIcon className="h-7 w-7" /> */}
         </Step>
       </Stepper>
       <div className="mt-16 flex justify-between">

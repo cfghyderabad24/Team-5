@@ -98,7 +98,6 @@ function HomePageUser() {
               </h2>
               <p className="text-3xl font-bold">{counts.totalNotifications}</p>
             </div>
-            <StepperWithContent/>
           </div>
         </div>
       </div>
