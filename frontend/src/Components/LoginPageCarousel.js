@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { message } from "antd";
+import banner from "../assets/images/banner.png"
 
 const ImageCarousel = () => {
   const [loginImages, setLoginImages] = useState([]);
@@ -42,7 +43,7 @@ const ImageCarousel = () => {
     <div className="h-5/6 w-full shadow-md rounded overflow-hidden relative">
       {loginImages.length > 0 && (
         <img
-          src={`data:image/jpeg;base64,${loginImages[currentImageIndex].data}`}
+          src={banner}
           alt={`Slide ${currentImageIndex + 1}`}
           className="w-full h-full object-cover"
         />

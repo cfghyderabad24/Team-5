@@ -6,6 +6,7 @@ import Cookies from "js-cookie"; // Import js-cookie
 import ImageCarousel from "../Components/LoginPageCarousel";
 import logo from "../Images/cryLogo.jpeg";
 import backgroundImage from "../Images/background.png";
+import banner from "../assets/images/banner.png"
 
 function Login() {
   const [email, setEmail] = useState(Cookies.get("email") || ""); // Initialize with cookie value if exists
@@ -33,81 +34,29 @@ function Login() {
   }, []);
 
   const login = async () => {
-    setLoading(true);
-    setLoginSuccess(false);
-    setLoginError(false);
-
     try {
-      const getLocation = () => {
-        return new Promise((resolve, reject) => {
-          navigator.geolocation.getCurrentPosition(
-            (position) => {
-              resolve(position.coords);
+        setLoading(true);
+        const response = await fetch("http://localhost:8000/api/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
             },
-            (error) => {
-              reject(error);
+            body: JSON.stringify({ email, password, role: userType }),
+        });
+        const data = await response.json();
+        if (response.ok) {
+            if (userType === "frontliner") {
+                navigate("/frontliner");
+            } else if (userType === "senior manager") {
+                navigate("/senior-manager");
             }
-          );
-        });
-      };
-      let response;
-      if (userType === "employee") {
-        const userLocation = await getLocation();
-        const { latitude, longitude } = userLocation;
-        response = await axios.post("https://sstaxmentors-server.vercel.app/login/login", {
-          email: email,
-          password: password,
-          userType: userType,
-          latitude: latitude,
-          longitude: longitude,
-        });
-      } else {
-        response = await axios.post("https://sstaxmentors-server.vercel.app/login/login", {
-          email: email,
-          password: password,
-          userType: userType,
-        });
-      }
-      if (response.data.success === true) {
-        const { token, role } = response.data;
-        localStorage.setItem("token", token);
-        localStorage.setItem("role", role);
-        message.success("Login Successful!");
-
-        if (rememberMe) {
-          Cookies.set("email", email, { expires: 7 }); // Store email in cookie for 7 days
-          Cookies.set("password", password, { expires: 7 }); // Store password in cookie for 7 days
-          Cookies.set("rememberMe", true, { expires: 7 }); // Store rememberMe state in cookie for 7 days
-        } else {
-          Cookies.remove("email");
-          Cookies.remove("password");
-          Cookies.remove("rememberMe");
+            else if (userType === "general manager") {
+                navigate("/general-manager");
+            }
         }
 
-        if (role === "user") {
-          navigate("/user/userdashboard");
-        } else if (role === "employee") {
-          navigate("/employee/employeedashboard");
-        } else {
-          navigate("/admin/admindashboard");
-        }
-
-        setLoginSuccess(true);
-      } else if (
-        userType === "user" &&
-        response.data.message === "User has been blocked"
-      ) {
-        message.info("You have been blocked");
-      } else if (
-        userType === "employee" &&
-        response.data.message === "Employee has been blocked"
-      ) {
-        message.info("You have been blocked");
-      } else {
-        setLoginError(true);
-        message.error("Invalid credentials");
-      }
-    } catch (err) {
+    }
+      catch (err) {
       message.error("Invalid Credentials");
       setLoginError(true);
     }
@@ -141,38 +90,38 @@ function Login() {
                 <label className="inline-flex items-center">
                   <input
                     type="radio"
-                    checked={userType === "user"}
-                    onChange={() => setUserType("user")}
+                    checked={userType === "frontliner"}
+                    onChange={() => setUserType("frontliner")}
                     style={{
                       marginRight: "0.5rem",
                       backgroundColor: "#3c82f6",
                     }}
                   />
-                  <span className="text-gray-700">User</span>
+                  <span className="text-gray-700">Frontliner</span>
                 </label>
                 <label className="inline-flex items-center">
                   <input
                     type="radio"
-                    checked={userType === "employee"}
-                    onChange={() => setUserType("employee")}
+                    checked={userType === "senior manager"}
+                    onChange={() => setUserType("senior manager")}
                     style={{
                       marginRight: "0.5rem",
                       backgroundColor: "#3c82f6",
                     }}
                   />
-                  <span className="text-gray-700">Employee</span>
+                  <span className="text-gray-700">Sr Manager</span>
                 </label>
                 <label className="inline-flex items-center">
                   <input
                     type="radio"
-                    checked={userType === "admin"}
-                    onChange={() => setUserType("admin")}
+                    checked={userType === "general manager"}
+                    onChange={() => setUserType("general manager")}
                     style={{
                       marginRight: "0.5rem",
                       backgroundColor: "#3c82f6",
                     }}
                   />
-                  <span className="text-gray-700">Admin</span>
+                  <span className="text-gray-700">General Manager</span>
                 </label>
               </div>
             </div>
@@ -202,29 +151,6 @@ function Login() {
               />
             </div>
 
-            <div className="">
-              <div className="text-blue-500 flex">
-                <input
-                  type="checkbox"
-                  id="rememberme"
-                  name="rememberme"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                />
-                <p className="ml-2">Remember me?</p>
-              </div>
-            </div>
-
-            <div className="flex justify-between mb-6 mt-3">
-              {userType === "user" && (
-                <div className="text-blue-500">
-                  <Link to="/register">Don't have an account?</Link>
-                </div>
-              )}
-              <div className="text-blue-500">
-                <Link to="/forgot-password">Forgot Password?</Link>
-              </div>
-            </div>
             <div className="flex justify-center">
               <form
                 onSubmit={(e) => {

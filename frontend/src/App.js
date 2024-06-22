@@ -48,9 +48,9 @@ function App() {
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/forgot-password" element={<ForgotPassword/>}></Route>
         {/* <Route path="/thankyou" element={<Thankyou/>}></Route> */}
-        <Route path="/user/userdashboard/*" element={<DashboardUser/>}></Route>
-        <Route path="/admin/admindashboard/*" element={<DashboardAdmin/>}></Route>
-        <Route path="/employee/employeedashboard/*" element={<DashboardEmployee/>}></Route>
+        <Route path="/frontliner" element={<DashboardUser/>}></Route>
+        <Route path="/general-manager" element={<DashboardAdmin/>}></Route>
+        <Route path="/senior-manager" element={<DashboardEmployee/>}></Route>
         <Route path="/login/reset-password" element={<ResetPassword />} />
         <Route path="/support-ticket-details/:ticketId" element={<SupportTicketDetails/>}></Route>
         <Route path="/support-ticket-detailse/:ticketId" element={<SupportTicketDetailsE/>}></Route>
