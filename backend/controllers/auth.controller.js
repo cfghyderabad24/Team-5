@@ -40,7 +40,7 @@ export const signupController = async (req, res) => {
             email, password: hashedPassword,
             phoneNo, name
         });
-        return res.status(200).json({ message: "General Manager created successfully" });
+        return res.status(200).json({ message: "General Manager created successfully", });
     }
 }
 

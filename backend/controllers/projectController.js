@@ -1,3 +1,4 @@
+import Frontliner from '../models/frontliner.model.js';
 import Project from '../models/project.models.js';
 import GeneralManager from './../models/generalManager.model.js';
 
@@ -61,6 +62,21 @@ export const deleteProjectById = async (req, res) => {
     }
 };
 
+// Update the field visit
+export const updateFieldVisit = async (req, res) => {
+    try {
+        const project = await Project.findById(req.params.id);
+        if (!project) {
+            return res.status(404).send();
+        }
+        project.status = req.body.fieldVisit;
+        await project.save();
+        res.status(200).send(project);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+};
+
 export const getProjectsByFrontliner = async (req, res) => {
     try {
         const id = req.params.id;
@@ -86,6 +102,81 @@ export const escalateProject = async (req, res) => {
             }
         })
         res.status(200).send(project);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+}
+
+export const updateProjectsDueDates = async (req, res) => {
+    try {
+        const projects = await Project.find({});
+
+        for (const project of projects) {
+            if (project.cycle === 'Jan') {
+                project.dueDates = {
+                    annualReviewVisit: { date: new Date('2024-11-15'), status: 'None' },
+                    aerSubmission: { date: new Date('2024-12-10'), status: 'None' },
+                    disbursalDate: { date: new Date('2024-01-31'), status: 'None' },
+                    monitoringEvaluationVisit: { date: new Date('2024-12-25'), status: 'None' },
+                    drsSubmissionApproval: { date: new Date('2024-01-25'), status: 'None' },
+                    drsSubmissionFinance: { date: new Date('2024-01-25'), status: 'None' }
+                };
+            } else if (project.cycle === 'July') {
+                project.dueDates = {
+                    annualReviewVisit: { date: new Date('2024-05-15'), status: 'None' },
+                    aerSubmission: { date: new Date('2024-06-10'), status: 'None' },
+                    disbursalDate: { date: new Date('2024-07-31'), status: 'None' },
+                    monitoringEvaluationVisit: { date: new Date('2024-06-25'), status: 'None' },
+                    drsSubmissionApproval: { date: new Date('2024-07-25'), status: 'None' },
+                    drsSubmissionFinance: { date: new Date('2024-07-25'), status: 'None' }
+                };
+            } else {
+                throw new Error(`Invalid cycle specified for project with ID ${project._id}`);
+            }
+
+            // Save the updated project
+            await project.save();
+        }
+
+        res.status(200).json({ message: 'Projects updated with due dates successfully' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export const storeDocuments = async (req, res) => {
+    try {
+        const {documents} = req.body;
+        const project = await Project.findById(req.params.id);
+        if (!project) {
+            return res.status(404).send();
+        }
+        const frontliner = await Frontliner.findById(req.params.frontlinerId);
+        if (!frontliner) {
+            return res.status(404).send();
+        }
+        frontliner.doc_uploaded.push(...documents);
+        await frontliner.save();
+        res.status(200).send(frontliner);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+}
+
+export const sanctionProject = async (req, res) => {
+    try {
+        const { sanctionedAmount } = req.body;
+        const project = await Project.findById(req.params.id);
+        if (!project) {
+            return res.status(404).send();
+        }
+        project.sanctionedAmount = project.sanctionedAmount + sanctionedAmount;
+        project.status = 'Sanctioned';
+        if (project.sanctionedAmount >= project.totalAmount) {
+            project.status = 'Completed';
+        }
+        await project.save();
+        return res.status(200).send(project);
     } catch (error) {
         res.status(400).send(error);
     }
