@@ -11,7 +11,6 @@ import Reminder from './models/reminder.model.js';
 import Frontliner from './models/frontliner.model.js';
 import Project from './models/project.models.js';
 import twilio from 'twilio';
-import Twilio from 'twilio/lib/rest/Twilio.js';
 
 dotenv.config();
 
