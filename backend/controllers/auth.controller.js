@@ -4,32 +4,41 @@ import GeneralManager from "../models/generalManager.model.js";
 import bcryptjs from 'bcryptjs';
 
 export const signupController = async (req, res) => {
-    const {email, password, role} = req.body;
+    const { email, password, role, phoneNo, name } = req.body;
     if (role === "frontliner") {
-        let frontliner = await Frontliner.findOne({email});
+        let frontliner = await Frontliner.findOne({ email });
         if (frontliner) {
-            return res.status(400).json({message: "Frontliner already exists"});
+            return res.status(400).json({ message: "Frontliner already exists" });
         }
         const hashedPassword = bcryptjs.hashSync(password, 12);
-        frontliner = await Frontliner.create({email, hashedPassword});
-        return res.status(200).json({message: "Frontliner created successfully"});
+        frontliner = await Frontliner.create({
+            email, hashedPassword,
+            phoneNo, name
+        });
+        return res.status(200).json({ message: "Frontliner created successfully" });
     }
     else if (role === "senior manager") {
-        let seniorManager = await SeniorManager.findOne({email});
+        let seniorManager = await SeniorManager.findOne({ email });
         if (seniorManager) {
-            return res.status(400).json({message: "Senior Manager already exists"});
+            return res.status(400).json({ message: "Senior Manager already exists" });
         }
         const hashedPassword = bcryptjs.hashSync(password, 12);
-        seniorManager = await SeniorManager.create({email, hashedPassword});
-        return res.status(200).json({message: "Senior Manager created successfully"});
+        seniorManager = await SeniorManager.create({
+            email, hashedPassword,
+            phoneNo, name
+        });
+        return res.status(200).json({ message: "Senior Manager created successfully" });
     }
     else if (role === "general manager") {
-        let generalManager = await GeneralManager.findOne({email});
+        let generalManager = await GeneralManager.findOne({ email });
         if (generalManager) {
-            return res.status(400).json({message: "General Manager already exists"});
+            return res.status(400).json({ message: "General Manager already exists" });
         }
         const hashedPassword = bcryptjs.hashSync(password, 12);
-        generalManager = await GeneralManager.create({email, hashedPassword});
-        return res.status(200).json({message: "General Manager created successfully"});
+        generalManager = await GeneralManager.create({
+            email, hashedPassword,
+            phoneNo, name
+        });
+        return res.status(200).json({ message: "General Manager created successfully" });
     }
 }

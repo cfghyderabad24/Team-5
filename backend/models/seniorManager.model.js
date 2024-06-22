@@ -1,10 +1,24 @@
 import mongoose from "mongoose";
 
 const seniorManagerSchema = new mongoose.Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+    name: {
+        type: String,
         required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String
+    },
+    role: {
+        type: String,
+        default: 'general manager'
+    },
+    phoneNo:{
+        type:String,
+        required:true
     },
     projects: {
         type: [{

@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import authRoutes from './routes/auth.routes.js';
+import projectRoutes from './routes/projectRoutes.js'
 dotenv.config();
 
 const app = express();
@@ -13,8 +14,9 @@ const PORT = 8000;
 app.use(cors());
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(express.json());
-app.use("/api/auth", );
-app.use('/api', userRoutes);
+app.use('/api',projectRoutes)
+// app.use("/api/auth", );
+// app.use('/api', userRoutes);
 mongoose.connect(process.env.MONGODB_URI, {
 }).then(() => {
     console.log("Database connected");
