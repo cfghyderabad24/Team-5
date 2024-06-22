@@ -5,6 +5,9 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import authRoutes from './routes/auth.routes.js';
 import projectRoutes from './routes/projectRoutes.js'
+import nodemailer from 'nodemailer';
+import cron from 'node-cron';
+
 dotenv.config();
 
 const app = express();
@@ -17,6 +20,48 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api", projectRoutes);
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'sivanivarada@gmail.com',
+      pass: 'rffu wbxy dnbd dlvo'
+    }
+  });
+
+  const emailSchema = new mongoose.Schema({
+    to: String,
+    subject: String,
+    text: String,
+    cronTime: String
+  });
+  
+  const EmailJob = mongoose.model('EmailJob', emailSchema);
+
+  const sendEmails = async () => {
+    const users = ['venkatpandu999@gmail.com'];
+    users.forEach(user => {
+      const mailOptions = {
+        from: 'sivanivarada@gmail.com',
+        to: user,
+        subject: 'Monthly Update',
+        text: 'This is your monthly email update.'
+      };
+  
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log('Error sending email: ', error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+    });
+  };
+
+  cron.schedule('* * * * *', () => {
+    console.log('Running a job at the start of the month');
+    sendEmails();
+  });
 
 mongoose.connect(process.env.MONGODB_URI, {
 }).then(() => {
