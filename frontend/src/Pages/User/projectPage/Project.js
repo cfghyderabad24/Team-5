@@ -84,11 +84,9 @@ function Project() {
       </style>
       <NavigationBar />
       <div className="flex flex-wrap h-screen" style={{ paddingTop: "10px" }}>
-        <div className="w-full p-5">
+        <div className="w-full p-5 mt-8">
           {/* <HomepageCarousel className="mt-10" /> */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 mt-5">
-            <StepperWithContent/>
-          </div>
+          <StepperWithContent/>
         </div>
       </div>
       <StepperWithContent/>

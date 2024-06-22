@@ -8,13 +8,10 @@ import MyLogo from "../../../Images/cryLogo.jpeg";
 
 
 const ViewKYC = lazy(() => import("../Document/KYC/ViewKYC"));
-const ViewBills = lazy(() => import("../Invoice/InvoiceHistory"));
 const AddCompany = lazy(() => import("../Client/AddCompany"));
 const AddClient = lazy(() => import("../Client/AddClient"));
 const  ViewClient = lazy(() => import("../Client/ViewClient"));
-const Notification = lazy(() => import("../Notification/Notification"));
 const Reminder = lazy(() => import("../Reminder/Reminder"));
-const SupportTicket = lazy(() => import("../SupportTicket/SupportTicket"));
 const GSTNoticeE = lazy(() => import("../Document/GSTNotice/SendGSTNotice"));
 const GSTreturns = lazy(() => import("../Document/GSTReturns/SendGSTReturns"));
 const ITreturns = lazy(() => import("../Document/ITReturns/SendITreturns"));
@@ -22,18 +19,14 @@ const SendCMApreparation = lazy(() => import("../Document/CMA/SendCMApreparation
 const SendNewROCfilings = lazy(() => import("../Document/ROCFilings/SendROCfilings"));
 const SendNewLicense = lazy(() => import("../Document/License/SendLicense"));
 const HomePage = lazy(() => import("../Home/HomePage"));
-const CreatePaymentBill = lazy(() => import("../Invoice/CreateInvoice"));
-const AddOnServicePage = lazy(() => import("../AddOnServices/AddOnServices"));
 const ViewITReturns = lazy(() => import("../Document/ITReturns/ViewITReturns"));
 const ViewGSTReturns = lazy(() => import("../Document/GSTReturns/ViewGSTReturns"));
 const ViewGSTNotice = lazy(() => import("../Document/GSTNotice/ViewGSTNotice"));
 const ViewROCFilings = lazy(() => import("../Document/ROCFilings/ViewROCFilings"));
 const ViewCMAPreparation = lazy(() => import("../Document/CMA/ViewCMAPreparation"));
 const ViewLicense = lazy(() => import("../Document/License/ViewLicense"));
-const HistoryPage = lazy(() => import("../FileHistory/History"));
 const MyProfile = lazy(() => import("../Profile/MyProfile"));
-const TransactionHistory = lazy(() => import("../Transaction/TransactionHistory"));
-const EmployeeTransactions = lazy(() => import("../Transaction/TransactionStatus"));
+
 
 const SidebarContext = createContext();
 
@@ -152,12 +145,9 @@ function Sidebar({ children }) {
         >
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/notificationse" element={<Notification />} />
             <Route path="/reminderse" element={<Reminder />} />
-            <Route path="/support-tickete" element={<SupportTicket />} />
             <Route path="/gstreturnse" element={<GSTreturns />} />
             <Route path="/viewgstreturnse" element={<ViewGSTReturns />} />
-            <Route path="/createinvoice" element={<CreatePaymentBill />} />
             <Route path="/gstnoticee" element={<GSTNoticeE />} />
             <Route path="/viewgstnoticee" element={<ViewGSTNotice />} />
             <Route path="/itreturnse" element={<ITreturns />} />
@@ -168,23 +158,11 @@ function Sidebar({ children }) {
             <Route path="/viewlicensee" element={<ViewLicense />} />
             <Route path="/rocfilingse" element={<SendNewROCfilings />} />
             <Route path="/viewrocfilingse" element={<ViewROCFilings />} />
-            <Route path="/AddOnServices" element={<AddOnServicePage />} />
-            <Route path="/history" element={<HistoryPage />} />
             <Route path="/myprofilee" element={<MyProfile />} />
             <Route path="/viewkyce" element={<ViewKYC />} />
             <Route path="/addcompany" element={<AddCompany />} />
             <Route path="/add-client" element={<AddClient/>} />
             <Route path="/view-client" element={<ViewClient/>} />
-            <Route path="/viewbills" element={<ViewBills/>} />
-
-            <Route
-              path="/transactionstatus"
-              element={<EmployeeTransactions />}
-            />
-            <Route
-              path="/transactionhistory"
-              element={<TransactionHistory />}
-            />
             {/* <Route path="/AddOnServices"element={<AddOnServicePage/>}/> */}
           </Routes>
         </Suspense>
