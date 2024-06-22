@@ -62,6 +62,21 @@ export const deleteProjectById = async (req, res) => {
     }
 };
 
+// Update the field visit
+export const updateFieldVisit = async (req, res) => {
+    try {
+        const project = await Project.findById(req.params.id);
+        if (!project) {
+            return res.status(404).send();
+        }
+        project.status = req.body.fieldVisit;
+        await project.save();
+        res.status(200).send(project);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+};
+
 export const getProjectsByFrontliner = async (req, res) => {
     try {
         const id = req.params.id;

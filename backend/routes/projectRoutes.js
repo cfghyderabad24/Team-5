@@ -40,4 +40,7 @@ router.post('/projects/upload-docs', storeDocuments);
 
 router.post("/projects/sanctioned/:id", sanctionProject);
 
+// Update the field visit
+router.post('/projects/field-visit/:id', updateFieldVisit);
+
 export default router;
