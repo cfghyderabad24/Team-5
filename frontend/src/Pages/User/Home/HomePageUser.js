@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import HomepageCarousel from "../../../Components/HomePageCarousel";
 import NavigationBar from "../NavigationBar/NavigationBar";
 
 // Import the NavigationBar component
