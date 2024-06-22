@@ -5,7 +5,8 @@ import {
     getProjectById,
     updateProjectById,
     deleteProjectById,
-    getProjectsByFrontliner
+    getProjectsByFrontliner,
+    escalateProject
 } from '../controllers/projectController.js';
 
 const router = express.Router();
@@ -27,5 +28,7 @@ router.get('/projects/frontliner/:id', getProjectsByFrontliner);
 
 // Delete a project by ID
 router.delete('/projects/:id', deleteProjectById);
+
+router.post('/projects/escalate/:id', escalateProject)
 
 export default router;

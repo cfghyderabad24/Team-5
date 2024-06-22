@@ -1,4 +1,5 @@
 import Project from '../models/project.models.js';
+import GeneralManager from './../models/generalManager.model.js';
 
 // Create a new project
 export const createProject = async (req, res) => {
@@ -70,5 +71,22 @@ export const getProjectsByFrontliner = async (req, res) => {
         return res.status(200).json(projects);
     } catch (error) {
         return error;
+    }
+}
+
+export const escalateProject = async (req, res) => {
+    try {
+        const project = await Project.findById(req.params.id);
+        if (!project) {
+            return res.status(404).send();
+        }
+        const sm = await GeneralManager.updateOne({_id: "6676d2392c2026b01af56ead"}, {
+            $push: {
+                projects: project._id
+            }
+        })
+        res.status(200).send(project);
+    } catch (error) {
+        res.status(400).send(error);
     }
 }

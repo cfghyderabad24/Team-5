@@ -27,6 +27,14 @@ const generalManagerSchema = new mongoose.Schema({
             default: []
         }
     ]
+    ,
+    projects: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Project',
+            default: []
+        }
+    ]
 })
 const GeneralManager = mongoose.model('generalManager', generalManagerSchema);
 export default GeneralManager;
