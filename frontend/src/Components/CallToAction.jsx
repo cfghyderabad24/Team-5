@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const handleGetStartedClick = () => {
   // Redirect to WhatsApp with the specified phone number and message
-  window.open('https://wa.me/+918801103053?text=Hello SSTax Mentors!', '_blank');
+  window.open('https://wa.me/+919115911500?text=Hello SSTax Mentors!', '_blank');
 
 };
 
@@ -19,13 +19,13 @@ const CallToAction = () => {
         <div>
           <button
             onClick={handleGetStartedClick} // Call handleGetStartedClick function on button click
-            className='p-3 px-6 ml-5 mb-5 text-brightRed bg-white rounded-full shadow-2xl baseline hover:bg-gray-900 hover:text-white'
+            className='p-3 px-6 ml-5 mb-5 text-black bg-white rounded-full shadow-2xl baseline hover:bg-gray-900 hover:text-white'
           >
             Get Started
           </button>
           <Link
             to='/login'
-            className='p-3 px-6 ml-5  text-brightRed bg-white rounded-full shadow-2xl baseline hover:bg-gray-900 hover:text-white'
+            className='p-3 px-6 ml-5  text-black bg-white rounded-full shadow-2xl baseline hover:bg-gray-900 hover:text-white'
              // Add margin-top style
           >
             Login / Signup

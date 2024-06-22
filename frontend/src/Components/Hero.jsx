@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import illustrationIntro from '../assets/images/illustration-intro.svg';
+import illustrationIntro from '../assets/images/illustrationintro3.svg';
 
 const Hero = () => {
   const [textIndex, setTextIndex] = useState(0);
   const texts = [
-    "Unlocking Success Through Expert Accounting, Tax, and Advisory Solutions.",
-    "Empowering Your Business with Proactive Financial Management.",
-    "Guiding Your Growth with Tailored Accounting and Tax Strategies."
+    "Empowering Childhoods Through Advocacy and Care.",
+    "Securing Rights, Building Futures for Every Child.",
+    "Championing Child Rights for a Brighter Tomorrow."
   ];
   const [displayedText, setDisplayedText] = useState('');
 
@@ -31,7 +31,7 @@ const Hero = () => {
 
   const handleGetStartedClick = () => {
     // Redirect to WhatsApp with the specified phone number and message
-    window.open('https://wa.me/+918801103053?text=Hello SSTax Mentors!', '_blank');
+    window.open('https://wa.me/+919115911500?text=Hello CRY!', '_blank');
   };
 
   return (
@@ -44,7 +44,7 @@ const Hero = () => {
         <div className='container flex flex-col-reverse items-center px-6 mx-auto mt-10 space-y-0 md:space-y-0 md:flex-row'>
           <div className='flex flex-col mb-32 space-y-12 md:w-1/2'>
             <h1 className='max-w-md text-4xl font-bold text-center md:text-5xl md:text-left uppercase' style={{ lineHeight: '1.1' }}>
-              Empower Your Financial Journey with<br></br> <span className='text-brightRed'>SS Tax Mentors</span>
+            Let’s ensure Happy Childhoods for India’s children with<br></br> <span className='text-brightRed'>CRY</span>
             </h1>
             <div className="max-w-md h-16 overflow-hidden">
               <p className='text-1xl text-center uppercase text-darkGrayishBlue md:text-left'>
@@ -54,13 +54,13 @@ const Hero = () => {
             <div className='flex justify-center md:justify-start'>
             <button
                 onClick={handleGetStartedClick} // Call handleGetStartedClick function on button click
-                className='p-3 px-6 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight'
+                className='p-3 px-6 text-black bg-brightRed rounded-full baseline hover:bg-brightRedLight'
               >
                 Get Started
               </button>
               <Link
                 to='/login'
-                className='p-3 px-6 ml-5 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight'
+                className='p-3 px-6 ml-5 text-black bg-brightRed rounded-full baseline hover:bg-brightRedLight'
               >
                 Login / Signup
               </Link>

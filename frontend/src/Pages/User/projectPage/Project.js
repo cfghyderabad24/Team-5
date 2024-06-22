@@ -11,6 +11,7 @@ import cardBg3 from "../../../Images/4.png";
 import cardBg4 from "../../../Images/1.png";
 import { StepperWithContent } from "../../../Components/progressStepbar";
 import BarChart from "../Charts/chart1";
+import FundsCard from "../../../Components/FundDetails";
 
 function Project() {
   const [counts, setCounts] = useState({
@@ -92,7 +93,7 @@ function Project() {
         <BarChart/>
       </div>
     </div>
-
+    <FundsCard/>
     </>
   );
 }

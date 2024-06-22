@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
-import companyLogo from '../assets/images/logo.svg';
+import companyLogo from '../Images/cryLogo.jpeg';
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -25,9 +25,6 @@ const Navbar = () => {
           <ScrollLink to='testimonials' smooth={true} duration={500} className='hover:text-brightRed' onClick={closeMenuHandler}>
             Features
           </ScrollLink>
-          <ScrollLink to='features' smooth={true} duration={500} className='hover:text-brightRed' onClick={closeMenuHandler}>
-            WhyUs?
-          </ScrollLink>
           <ScrollLink to='services' smooth={true} duration={500} className='hover:text-brightRed' onClick={closeMenuHandler}>
             Services
           </ScrollLink>
@@ -47,7 +44,7 @@ const Navbar = () => {
         {/* Login/Signup Button */}
         <Link
           to='/login'
-          className='hidden p-3 px-6 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight md:block'
+          className='hidden p-3 px-6 text-black bg-brightRed rounded-full baseline hover:bg-brightRedLight md:block'
         >
           Login / Signup
         </Link>
