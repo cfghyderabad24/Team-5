@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import authRoutes from './routes/auth.routes.js';
+import projectRoutes from './routes/projectRoutes.js'
 dotenv.config();
 
 const app = express();
@@ -20,7 +21,7 @@ app.use("/api/auth", authRoutes);
 mongoose.connect(process.env.MONGODB_URI, {
 }).then(() => {
     console.log("Database connected");
-    app.listen(3000, () => {
+    app.listen(8000, () => {
         console.log('App running on PORT 8000');
     })
 }).catch((error) => {
