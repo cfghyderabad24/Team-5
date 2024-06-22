@@ -22,11 +22,11 @@ app.use("/api/auth", authRoutes);
 app.use("/api", projectRoutes);
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'sivanivarada@gmail.com',
-      pass: 'rffu wbxy dnbd dlvo'
-    }
+  service: 'gmail',
+  auth: {
+    user: 'sivanivarada@gmail.com',
+    pass: process.env.EMAIL_PASSWORD
+  }
   });
 
   const emailSchema = new mongoose.Schema({
