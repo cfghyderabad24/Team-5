@@ -6,7 +6,8 @@ import {
     updateProjectById,
     deleteProjectById,
     getProjectsByFrontliner,
-    escalateProject
+    escalateProject,
+    updateProjectsDueDates
 } from '../controllers/projectController.js';
 
 const router = express.Router();
@@ -30,5 +31,7 @@ router.get('/projects/frontliner/:id', getProjectsByFrontliner);
 router.delete('/projects/:id', deleteProjectById);
 
 router.post('/projects/escalate/:id', escalateProject)
+
+router.post('/update-due-dates', updateProjectsDueDates);
 
 export default router;

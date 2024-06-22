@@ -48,4 +48,4 @@ const seniorManagerSchema = new mongoose.Schema({
 })
 
 const SeniorManager = mongoose.model('SeniorManager', seniorManagerSchema);
-export default SeniorManager;
+export default SeniorManager;
