@@ -6,7 +6,11 @@ import {
     updateProjectById,
     deleteProjectById,
     getProjectsByFrontliner,
-    escalateProject
+    escalateProject,
+    updateProjectsDueDates,
+    storeDocuments,
+    sanctionProject,
+    updateFieldVisit
 } from '../controllers/projectController.js';
 
 const router = express.Router();
@@ -30,5 +34,14 @@ router.get('/projects/frontliner/:id', getProjectsByFrontliner);
 router.delete('/projects/:id', deleteProjectById);
 
 router.post('/projects/escalate/:id', escalateProject)
+
+router.post('/update-due-dates', updateProjectsDueDates);
+
+router.post('/projects/upload-docs', storeDocuments);
+
+router.post("/projects/sanctioned/:id", sanctionProject);
+
+// Update the field visit
+router.post('/projects/field-visit/:id', updateFieldVisit);
 
 export default router;
