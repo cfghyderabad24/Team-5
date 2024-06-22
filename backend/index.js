@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 
-const PORT = 3000;
+const PORT = 8000;
 
 app.use(cors());
 app.use(bodyParser.json({limit: '50mb'}));
@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 }).then(() => {
     console.log("Database connected");
     app.listen(3000, () => {
-        console.log('App running on PORT 3000');
+        console.log('App running on PORT 8000');
     })
 }).catch((error) => {
     console.log(error);
