@@ -19,8 +19,8 @@ app.use("/api/auth", );
 mongoose.connect(process.env.MONGODB_URI, {
 }).then(() => {
     console.log("Database connected");
-    app.listen(8000, () => {
-        console.log('App running on PORT 3000');
+    app.listen(3000, () => {
+        console.log('App running on PORT 8000');
     })
 }).catch((error) => {
     console.log(error);
