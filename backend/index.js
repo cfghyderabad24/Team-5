@@ -58,7 +58,7 @@ const transporter = nodemailer.createTransport({
     });
   };
 
-  cron.schedule('* * * * *', () => {
+  cron.schedule('0 0 1 1,4,7,10 *', () => {
     console.log('Running a job at the start of the month');
     sendEmails();
   });
