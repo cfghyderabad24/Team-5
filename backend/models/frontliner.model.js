@@ -19,14 +19,12 @@ const frontlinerSchema = new mongoose.Schema({
     },
     reminders: {
         type: [{
-            date: Date,
-            content: String,
-            status: {
-                type: String,
-                enum: ['Pending', 'Completed'],
-                default: 'Pending'
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Reminder'
         }],
         default: []
     },
 })
+
+const Frontliner = mongoose.model('Frontliner', frontlinerSchema);
+export default Frontliner;
