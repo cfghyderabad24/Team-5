@@ -25,4 +25,5 @@ const frontlinerSchema = new mongoose.Schema({
         default: []
     },
 })
-export default mongoose.model('frontliner', frontlinerSchema);
+const Frontliner = mongoose.model('Frontliner', frontlinerSchema);
+export default Frontliner;
