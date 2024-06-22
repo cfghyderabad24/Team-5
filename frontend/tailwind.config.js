@@ -37,6 +37,7 @@ module.exports =withMT({
       },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],
+        'rubik': ['Rubik', 'sans-serif'],
       },
     },
   },

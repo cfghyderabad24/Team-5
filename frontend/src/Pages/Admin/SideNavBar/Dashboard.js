@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from 'react';
 import { LayoutDashboard,Bell,Ticket,CircleUser,ScanBarcode,ReceiptIndianRupee,UserPlus,UserMinus,BadgePlus, User,StickyNote,Files,Settings,History} from "lucide-react";
 import { Sidebar, SidebarItem } from "./Sidebar";
@@ -17,7 +14,7 @@ const Dashboard = () => {
               active
        />
 
-            <SidebarItem
+            {/* <SidebarItem
               icon={<User size={20}/>}
               text="Clients"
               dropdownItems={[
@@ -26,7 +23,7 @@ const Dashboard = () => {
                 { text: "Add Company", icon:<UserMinus />, to: "addcompany" }
                 // { text: "View Clients", icon:<UserMinus />, to: "view-client" }
               ]}
-            />
+            /> */}
 
             <SidebarItem
                icon={<CircleUser size={20}/>}
@@ -37,25 +34,25 @@ const Dashboard = () => {
                 { text: "Employee Attendance",icon:<UserMinus />, to: "employeeattendance" }
               ]}
             />
-        <SidebarItem
+        {/* <SidebarItem
               icon={<Bell size={20} />}
               text="Notification"
               to="notificationsa"
               
-       /> 
+       />  */}
          <SidebarItem
               icon={<StickyNote size={20} />}
               text="Reminder"
               to="remindersa"
               
        />
-         <SidebarItem
+         {/* <SidebarItem
               icon={<Ticket  size={20} />}
               text="Support Ticket"
               to="support-ticketa"
               
-          />
-          <SidebarItem
+          /> */}
+          {/* <SidebarItem
               icon={<ReceiptIndianRupee size={20}/>}
               text="Invoices"
               dropdownItems={[
@@ -64,8 +61,8 @@ const Dashboard = () => {
                 // { text: "GST Notice", to: "gstnoticea" },
                 
               ]}
-            />
-          <SidebarItem
+            /> */}
+          {/* <SidebarItem
               icon={<ScanBarcode size={20}/>}
               text="Transactions"
               dropdownItems={[
@@ -75,61 +72,21 @@ const Dashboard = () => {
                 // { text: "GST Notice", to: "gstnoticea" },
                 
               ]}
-            />
-             <SidebarItem
+            /> */}
+             {/* <SidebarItem
               icon={<History size={20} />}
               text="History"
               to="historya"
-            />
-             <SidebarItem
-              icon={<Files size={20}/>}
-              text="Add Documents"
-              dropdownItems={[
-                { text: "GST Returns", to: "gstreturnsa" },
-                { text: "IT Returns", to: "itreturnsa" },
-                { text: "ROC Filings", to: "rocfilingsa" },
-                // { text: "View IT Returns", to: "viewitreturnsa" },
-                { text: "License", to: "licensea" },
-                { text: "CMA Preparation", to: "cmaa" },
-                { text: "GST Notice", to: "gstnoticea" },
-                // { text: "View GST Notice", to: "viewgstnoticea" },
-                // { text: "View GST Returns", to: "viewgstreturnsa" },
-                // { text: "View ROC Filings", to: "viewrocfilingsa" },
-                // { text: "View License", to: "viewlicensea" },
-                // { text: "View CMA Preparation", to: "viewcmaa" },
-                // { text: "Others", to: "othersa" },
-              ]}
-              />
-             <SidebarItem
-              icon={<Files size={20}/>}
-              text="View Documents"
-              dropdownItems={[
-                // { text: "IT Returns", to: "itreturnsa" },
-                { text: "View KYC", to: "viewkyc" },
-                { text: "View GST Returns", to: "viewgstreturnsa" },
-                { text: "View IT Returns", to: "viewitreturnsa" },
-                // { text: "GST Notice", to: "gstnoticea" },
-                // { text: "GST Returns", to: "gstreturnsa" },
-                { text: "View ROC Filings", to: "viewrocfilingsa" },
-                { text: "View License", to: "viewlicensea" },
-                { text: "View CMA Preparation", to: "viewcmaa" },
-                { text: "View GST Notice", to: "viewgstnoticea" },
-                // { text: "ROC Filings", to: "rocfilingsa" },
-                // { text: "License", to: "licensea" },
-                // { text: "CMA Preparation", to: "cmaa" },
-                // { text: "Others", to: "othersa" },
-              ]}
-              />
-        
+            /> */}
 
-        <SidebarItem
+        {/* <SidebarItem
               
               text="Add On Services"
               to="AddOnServices"
               icon={<BadgePlus size={20}/>}
               
-              /> 
-            <SidebarItem
+              />  */}
+            {/* <SidebarItem
               icon={<Settings size={20}/>}
               text="Settings"
               dropdownItems={[
@@ -148,7 +105,7 @@ const Dashboard = () => {
                 { text: "Add On Services Settings", to: "addonservicessettings" },
                 // { text: "Others", to: "othersa" },
               ]}
-            />
+            /> */}
       </Sidebar>
       </div>
   </div>

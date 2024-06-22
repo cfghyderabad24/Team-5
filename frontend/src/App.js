@@ -1,7 +1,6 @@
 import ForgotPassword from "./Pages/ForgotPassword";
 import ResetPassword from "./Pages/ResetPassword";
 import { useState,lazy,Suspense } from "react";
-import Registrationform from "./Pages/User/Registration/Registrationform";
 import {BrowserRouter as Router ,Routes,Route} from 'react-router-dom'
 // import Thankyou from "./Pages/Thankyou";
 import Homepage from './Pages/Homepage'
@@ -42,15 +41,14 @@ function App() {
     </div>}>
 
       <Routes>
-        <Route path="/register" element={<Registrationform/>}></Route>
         {/* <Route path="/" element={<Login/>}></Route> */}
         <Route path="/" element={<Homepage/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/forgot-password" element={<ForgotPassword/>}></Route>
         {/* <Route path="/thankyou" element={<Thankyou/>}></Route> */}
-        <Route path="/user/userdashboard/*" element={<DashboardUser/>}></Route>
-        <Route path="/admin/admindashboard/*" element={<DashboardAdmin/>}></Route>
-        <Route path="/employee/employeedashboard/*" element={<DashboardEmployee/>}></Route>
+        <Route path="/frontliner*" element={<DashboardUser/>}></Route>
+        <Route path="/general-manager*" element={<DashboardAdmin/>}></Route>
+        <Route path="/senior-manager*" element={<DashboardEmployee/>}></Route>
         <Route path="/login/reset-password" element={<ResetPassword />} />
         <Route path="/support-ticket-details/:ticketId" element={<SupportTicketDetails/>}></Route>
         <Route path="/support-ticket-detailse/:ticketId" element={<SupportTicketDetailsE/>}></Route>
