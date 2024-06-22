@@ -9,7 +9,8 @@ import {
     escalateProject,
     updateProjectsDueDates,
     storeDocuments,
-    sanctionProject
+    sanctionProject,
+    updateFieldVisit
 } from '../controllers/projectController.js';
 
 const router = express.Router();
