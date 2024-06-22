@@ -1,5 +1,17 @@
 import mongoose from 'mongoose';
 
+const dueDateSchema = new mongoose.Schema({
+    date: {
+        type: Date,
+        default: null
+    },
+    status: {
+        type: String,
+        enum: ['None', 'Fulfilled', 'Pending'],
+        default: 'None'
+    }
+});
+
 const projectSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -17,19 +29,38 @@ const projectSchema = new mongoose.Schema({
     status: {
         type: String,
         enum: ['Field Visit', 'Upload Documents', 'Documents Uploaded', 'Sanctioned', 'Completed', 'Rejected'],
-        required: true
+        default: 'None' // Default status
     },
     cycle: {
         type: String,
         enum: ['Jan', 'July'],
         required: true
     },
-    sanctioned: {
-        type: [{
-            amount: Number,
-            date: Date
-        }],
-        required: true
+    dueDates: {
+        annualReviewVisit: {
+            type: dueDateSchema,
+            default: {}
+        },
+        aerSubmission: {
+            type: dueDateSchema,
+            default: {}
+        },
+        disbursalDate: {
+            type: dueDateSchema,
+            default: {}
+        },
+        monitoringEvaluationVisit: {
+            type: dueDateSchema,
+            default: {}
+        },
+        drsSubmissionApproval: {
+            type: dueDateSchema,
+            default: {}
+        },
+        drsSubmissionFinance: {
+            type: dueDateSchema,
+            default: {}
+        }
     },
     assignedTo: {
         type: mongoose.Schema.Types.ObjectId,
@@ -38,8 +69,8 @@ const projectSchema = new mongoose.Schema({
     sm_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    },
-})
+    }
+});
 
 const Project = mongoose.model('Project', projectSchema);
 export default Project;
