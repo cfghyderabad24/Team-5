@@ -1,5 +1,6 @@
-import Frontliner from "../models/Frontliner.js";
-import SeniorManager from "../models/SeniorManager.js";
+import Frontliner from "../models/frontliner.model.js";
+import SeniorManager from "../models/seniorManager.model.js";
+import GeneralManager from "../models/generalManager.model.js";
 import bcryptjs from 'bcryptjs';
 
 export const signupController = async (req, res) => {
@@ -23,7 +24,7 @@ export const signupController = async (req, res) => {
         return res.status(200).json({message: "Senior Manager created successfully"});
     }
     else if (role === "general manager") {
-        let generalManager = await generalManager.findOne({email});
+        let generalManager = await GeneralManager.findOne({email});
         if (generalManager) {
             return res.status(400).json({message: "General Manager already exists"});
         }

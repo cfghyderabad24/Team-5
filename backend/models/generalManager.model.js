@@ -13,4 +13,5 @@ const generalManagerSchema = new mongoose.Schema({
         required: true
     }
 })
-export default mongoose.model('generalManager', generalManagerSchema);
+const GeneralManager = mongoose.model('generalManager', generalManagerSchema);
+export default GeneralManager;
