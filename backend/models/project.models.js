@@ -21,11 +21,16 @@ const projectSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    sanctionedAmount: {
+        type: Number,
+        required: true
+    },
     dept: {
         type: String,
         enum: ['Education', 'Health', 'Agriculture', 'Infrastructure', 'Others'],
         required: true
     },
+
     status: {
         type: String,
         enum: ['Field Visit', 'Upload Documents', 'Documents Uploaded', 'Sanctioned', 'Completed', 'Rejected'],

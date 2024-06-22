@@ -1,3 +1,4 @@
+import Frontliner from '../models/frontliner.model.js';
 import Project from '../models/project.models.js';
 import GeneralManager from './../models/generalManager.model.js';
 
@@ -127,3 +128,41 @@ export const updateProjectsDueDates = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+export const storeDocuments = async (req, res) => {
+    try {
+        const {documents} = req.body;
+        const project = await Project.findById(req.params.id);
+        if (!project) {
+            return res.status(404).send();
+        }
+        const frontliner = await Frontliner.findById(req.params.frontlinerId);
+        if (!frontliner) {
+            return res.status(404).send();
+        }
+        frontliner.doc_uploaded.push(...documents);
+        await frontliner.save();
+        res.status(200).send(frontliner);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+}
+
+export const sanctionProject = async (req, res) => {
+    try {
+        const { sanctionedAmount } = req.body;
+        const project = await Project.findById(req.params.id);
+        if (!project) {
+            return res.status(404).send();
+        }
+        project.sanctionedAmount = project.sanctionedAmount + sanctionedAmount;
+        project.status = 'Sanctioned';
+        if (project.sanctionedAmount >= project.totalAmount) {
+            project.status = 'Completed';
+        }
+        await project.save();
+        return res.status(200).send(project);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+}

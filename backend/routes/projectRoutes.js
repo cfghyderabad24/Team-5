@@ -7,7 +7,9 @@ import {
     deleteProjectById,
     getProjectsByFrontliner,
     escalateProject,
-    updateProjectsDueDates
+    updateProjectsDueDates,
+    storeDocuments,
+    sanctionProject
 } from '../controllers/projectController.js';
 
 const router = express.Router();
@@ -33,5 +35,9 @@ router.delete('/projects/:id', deleteProjectById);
 router.post('/projects/escalate/:id', escalateProject)
 
 router.post('/update-due-dates', updateProjectsDueDates);
+
+router.post('/projects/upload-docs', storeDocuments);
+
+router.post("/projects/sanctioned/:id", sanctionProject);
 
 export default router;
