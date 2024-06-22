@@ -59,3 +59,16 @@ export const deleteProjectById = async (req, res) => {
         res.status(500).send(error);
     }
 };
+
+export const getProjectsByFrontliner = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const projects = await Project.find({ assignedTo: id });
+        if (!projects) {
+            return res.status(200).json({ message: 'No projects found' });
+        }
+        return res.status(200).json(projects);
+    } catch (error) {
+        return error;
+    }
+}
