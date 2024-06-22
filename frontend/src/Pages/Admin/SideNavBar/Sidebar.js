@@ -24,12 +24,9 @@ import MainCompo from "../Home/Home";
 import AddCompany from "../Clients/AddCompany";
 const ViewKYC = lazy(() => import("../Documents/KYC/ViewKYC"));
 const EmployeeAttendance = lazy(() => import("../Employee/Employeeattendance"));
-const ViewBills = lazy(() => import("../Invoice/InvoiceHistory"));
-const Notification = lazy(() => import("../Notification/Notification"));
 const Reminder = lazy(() => import("../Reminder/Reminder"));
 const AddClient = lazy(() => import("../Clients/AddClient"));
 const ViewClient = lazy(() => import("../Clients/ViewClient"));
-const SupportTicket = lazy(() => import("../SupportTicket/SupportTicket"));
 const AddEmployee = lazy(() => import("../Employee/AddEmployee"));
 const ManageEmployees = lazy(() => import("../Employee/ViewEmployee"));
 const GSTNoticeA = lazy(() => import("../Documents/GSTNotice/SendGSTNotice"));
@@ -37,29 +34,9 @@ const GSTreturns = lazy(() => import("../Documents/GSTReturns/SendGSTReturns"));
 const ITreturns = lazy(() => import("../Documents/ITReturns/SendITreturns"));
 const SendCMApreparation = lazy(() => import("../Documents/CMA/SendCMApreparation"));
 const SendNewROCfilings = lazy(() => import("../Documents/ROCFiling/SendROCfilings"));
-const SendNewLicense = lazy(() => import("../Documents/License/SendLicense"));
-const LicenseSettings = lazy(() => import("../Settings/License/LicenseSettings"));
-const CompanySettings = lazy(() => import("../Settings/Company/CompanySettings"));
-const ROCfilingssettings = lazy(() => import("../Settings/ROCFilings/ROCfilingsettings"));
-const BannerSettings = lazy(() => import("../Settings/Banner/BannerSettings"));
-const CMApreparationSettings = lazy(() => import("../Settings/CMA/CMApreparationSettings"));
-const HistoryPage = lazy(() => import("../FileHistory/HistoryA"));
-const CreateInvoice = lazy(() => import("../Invoice/CreateInvoice"));
-const EmailSettings = lazy(() => import("../Settings/Email/EmailSettings"));
-const PaymentSettings = lazy(() => import("../Settings/Payment/PaymentSettings"));
-const ITreturnsSettings = lazy(() => import("../Settings/ITReturns/ITReturnsSettings"));
-const GSTreturnsSettings = lazy(() => import("../Settings/GSTReturns/GSTReturnsSettings"));
-const GSTnoticeSettings = lazy(() => import("../Settings/GSTNotice/GSTNoticeSettings"));
-const TransactionHistory = lazy(() => import("../Transaction/TransactionHistory"));
-const AdminTransactions = lazy(() => import("../Transaction/TransactionStatus"));
-const AddOnServices = lazy(() => import("../AddOnServices/AddOnServices"));
-const ViewITReturns = lazy(() => import("../Documents/ITReturns/ViewITReturns"));
 const ViewGSTReturns = lazy(() => import("../Documents/GSTReturns/ViewGSTReturns"));
 const ViewGSTNotice = lazy(() => import("../Documents/GSTNotice/ViewGSTNotice"));
-const ViewROCFilings = lazy(() => import("../Documents/ROCFiling/ViewROCFilings"));
 const ViewCMAPreparation = lazy(() => import("../Documents/CMA/ViewCMAPreparation"));
-const AddOnServicesSettings = lazy(() => import("../Settings/AddOnService/AddOnServicesSettings"));
-const ViewLicense = lazy(() => import("../Documents/License/ViewLicense"));
 const ITDetailsInNewTab = lazy(() =>
   import("../../../Components/Admin/ITReturnsDetails")
 );
@@ -193,54 +170,23 @@ function Sidebar({ children }) {
           {/* Routing for sidebar components */}
           <Routes>
             <Route path="/" element={<MainCompo />} />
-            <Route path="/notificationsa" element={<Notification />} />
             <Route path="/remindersa" element={<Reminder />} />
             <Route path="/add-client" element={<AddClient />} />
             <Route path="/View-client" element={<ViewClient />} />
             <Route path="/View-employee" element={<ManageEmployees />} />
             <Route path="/add-employee" element={<AddEmployee />} />
-            <Route path="/support-ticketa" element={<SupportTicket />} />
             <Route path="/gstreturnsa" element={<GSTreturns />} />
             <Route path="/viewgstreturnsa" element={<ViewGSTReturns />} />
-            <Route path="/createinvoice" element={<CreateInvoice />} />
             <Route path="/gstnoticea" element={<GSTNoticeA />} />
             <Route path="/viewgstnoticea" element={<ViewGSTNotice />} />
             <Route path="/itreturnsa" element={<ITreturns />} />
-            <Route path="/viewitreturnsa" element={<ViewITReturns />} />
             <Route path="/rocfilingsa" element={<SendNewROCfilings />} />
-            <Route path="/viewrocfilingsa" element={<ViewROCFilings />} />
             <Route path="/cmaa" element={<SendCMApreparation />} />
             <Route path="/viewcmaa" element={<ViewCMAPreparation />} />
-            <Route path="/cma-settings" element={<CMApreparationSettings />} />
-            <Route path="/banner-settings" element={<BannerSettings />} />
-            <Route path="/roc-settings" element={<ROCfilingssettings />} />
-            <Route path="/company-settings" element={<CompanySettings />} />
-            <Route path="/license-settings" element={<LicenseSettings />} />
-            <Route path="/email-settings" element={<EmailSettings />} />
-            <Route path="/payment-settings" element={<PaymentSettings />} />
-            <Route path="/itreturns-settings" element={<ITreturnsSettings />} />
-           <Route path="/viewbills" element={<ViewBills/>} />
             <Route path="/addcompany" element={<AddCompany/>} />
             <Route path="/employeeattendance" element={<EmployeeAttendance/>} />
-            <Route
-              path="/gstreturns-settings"
-              element={<GSTreturnsSettings />}
-            />
-            <Route path="/gstnotice-settings" element={<GSTnoticeSettings />} />
-            <Route path="/transactionstatus" element={<AdminTransactions />} />
-            <Route
-              path="/transactionhistory"
-              element={<TransactionHistory />}
-            />
-            <Route path="/AddOnServices" element={<AddOnServices />} />
-            <Route path="/licensea" element={<SendNewLicense />} />
-            <Route path="/viewlicensea" element={<ViewLicense />} />
-            <Route path="/historya" element={<HistoryPage />} />
             <Route path="/viewkyc" element={<ViewKYC />} />
-            <Route
-              path="/addonservicessettings"
-              element={<AddOnServicesSettings />}
-            />
+
 
             <Route path="/itdetails" component={ITDetailsInNewTab} />
           </Routes>

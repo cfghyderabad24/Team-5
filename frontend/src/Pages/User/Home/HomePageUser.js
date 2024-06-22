@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import HomepageCarousel from "../../../Components/HomePageCarousel";
 import NavigationBar from "../NavigationBar/NavigationBar";
 
 // Import the NavigationBar component
@@ -99,7 +98,6 @@ function HomePageUser() {
               </h2>
               <p className="text-3xl font-bold">{counts.totalNotifications}</p>
             </div>
-            <StepperWithContent/>
           </div>
         </div>
       </div>
