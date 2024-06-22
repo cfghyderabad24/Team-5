@@ -137,6 +137,7 @@ function UserSidebar({ children }) {
                   expanded ? "w-60" : "w-0"
                 }`}
                 alt=""
+                style={{height: '70px', width: '120px'}}
               />
               <button
                 onClick={toggleSidebar}
@@ -175,6 +176,7 @@ function UserSidebar({ children }) {
               <Route path="/gstreturns" element={<GSTReturns />} />
               <Route path="/gstnotice" element={<GSTNotice />} />
               <Route path="/gstregistration" element={<GSTRegistration />} />
+              <Route path="/uploaddocuments" element={<uploadDocuments />} />
               <Route path="/rocfilings" element={<ROCfilings />} />
               <Route path="/cma" element={<CMApreparation />} />
               <Route path="/license" element={<Licenses />} />

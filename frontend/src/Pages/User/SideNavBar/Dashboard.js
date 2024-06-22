@@ -150,11 +150,11 @@ const Dashboard = () => {
             {!showPayments && (
               <SidebarItem
                 icon={<Files size={20} />}
-                text="Uploaded Documents"
+                text="Documents"
                 dropdownItems={[
                   { text: "KYC", to: "KYC" },
                   { text: "GST Registration", to: "gstregistration" },
-                  { text: "GST Returns", to: "gstreturns" },
+                  { text: "Uplaod Documents", to: "uploaddocuments" },
                   { text: "IT Returns", to: "itreturns" },
                   { text: "ROC Filings", to: "rocfilings" },
                   { text: "License", to: "license" },

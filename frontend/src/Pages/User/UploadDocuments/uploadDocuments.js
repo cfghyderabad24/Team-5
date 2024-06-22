@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 import NavigationBar from "../../NavigationBar/NavigationBar";
 
-const KYC = () => {
+const uploadDocuments = () => {
   let isMounted;
   let navigate = useNavigate();
   const [aadharFile, setAadharFile] = useState(null);
@@ -365,26 +365,27 @@ const KYC = () => {
       <hr></hr>
       <div className="p-4 mx-5gis">
         <p className="font-bold text-3xl text-blue-500 ml-4 mb-10">
-          UPLOAD DOCUMENTS
+          KYC DOCUMENTS
         </p>
         <div>
           <label className="block m-4 text-gray-700 text-lg ">
-            Document 1:
+            Aadhar Card:
           </label>
           {renderFileButtons("aadhar")}
         </div>
 
         <div>
-          <label className="block m-4 text-gray-700 text-lg">Document 2:</label>
+          <label className="block m-4 text-gray-700 text-lg">Pan Card:</label>
           {renderFileButtons("pan")}
         </div>
 
         <div>
           <label className="block m-4 text-gray-700 text-lg">
-            Document 3:
+            Electricity Bill:
           </label>
           {renderFileButtons("electricityBill")}
         </div>
+
 
         {/* Confirmation Modal */}
         {modalOpen && (
@@ -440,4 +441,4 @@ const KYC = () => {
   );
 };
 
-export default KYC;
+export default uploadDocuments;
