@@ -156,6 +156,7 @@ function Sidebar({ children }) {
                 expanded ? "w-60" : "w-0"
               }`}
               alt=""
+              style={{height: '70px', width: '120px'}}
             />
             <button
               onClick={toggleSidebar}
