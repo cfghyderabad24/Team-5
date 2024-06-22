@@ -42,6 +42,7 @@ const HomePageUser = lazy(() => import("../Home/HomePageUser"));
 const ViewAddOnServices = lazy(() => import("../AddOnServices/ViewAddOnServices"));
 const HistoryPage = lazy(() => import("../../../Components/User/HistoryU"));
 const Payment = lazy(() => import("../Payment/PendingPayments"));
+const Project = lazy(() => import("../projectPage/Project"));
 
 // Create context for sidebar state
 const SidebarContext = createContext();
@@ -177,6 +178,7 @@ function UserSidebar({ children }) {
               <Route path="/gstnotice" element={<GSTNotice />} />
               <Route path="/gstregistration" element={<GSTRegistration />} />
               <Route path="/uploaddocuments" element={<uploadDocuments />} />
+              <Route path="/projects" element={<Project />} />
               <Route path="/rocfilings" element={<ROCfilings />} />
               <Route path="/cma" element={<CMApreparation />} />
               <Route path="/license" element={<Licenses />} />
