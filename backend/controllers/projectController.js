@@ -91,7 +91,6 @@ export const escalateProject = async (req, res) => {
         res.status(400).send(error);
     }
 }
-}
 
 export const updateProjectsDueDates = async (req, res) => {
     try {
