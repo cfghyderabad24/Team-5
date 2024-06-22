@@ -87,9 +87,19 @@ const Dashboard = () => {
             {/* Sidebar items */}
             <SidebarItem
               icon={<LayoutDashboard size={20} />}
-              text="Dashboard"
+              text="Projects Assigned"
               to=""
               active
+            />
+            <SidebarItem
+              icon={<LayoutDashboard size={20} />}
+              text="Field Visit"
+              to="FieldVisit"
+            />
+            <SidebarItem
+              icon={<LayoutDashboard size={20} />}
+              text="Evaluation Visit"
+              to="EvaluationVisit"
             />
             {/* My Profile */}
             {!showPayments && (

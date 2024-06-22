@@ -24,7 +24,8 @@ const GSTReturns = lazy(() => import("../../../Components/User/GSTReturnsUser"))
 const KYC = lazy(() => import("../Document/KYC/KYC"));
 const HomePageUser = lazy(() => import("../Home/HomePageUser"));
 const Project = lazy(() => import("../projectPage/Project"));
-
+const FieldVisit=lazy(()=> import("../FieldVisit"))
+const EvaluationVisit=lazy(()=> import("../EvaluationVisit"))
 // Create context for sidebar state
 const SidebarContext = createContext();
 
@@ -153,6 +154,8 @@ function UserSidebar({ children }) {
               <Route path="/gstnotice" element={<GSTNotice />} />
               <Route path="/uploaddocuments" element={<uploadDocuments />} />
               <Route path="/projects" element={<Project />} />
+              <Route path="/FieldVisit" element={<FieldVisit />} />
+              <Route path="/EvaluationVisit" element={<EvaluationVisit />} />
             </Routes>
           </Suspense>
         </div>

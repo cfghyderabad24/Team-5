@@ -1,111 +1,76 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NavigationBar from "../NavigationBar/NavigationBar";
+import { useNavigate } from "react-router-dom";
 
-// Import the NavigationBar component
-
-import cardBg1 from "../../../Images/1.png";
-import cardBg2 from "../../../Images/4.png";
-import cardBg3 from "../../../Images/4.png";
-import cardBg4 from "../../../Images/1.png";
-import { StepperWithContent } from "../../../Components/progressStepbar";
-
-function HomePageUser() {
-  const [counts, setCounts] = useState({
-    totalReminders: 0,
-    totalNotifications: 0
-  });
+const Projects = () => {
+  const [projects, setProjects] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    async function fetchClientsCounts() {
+    const fetchProjects = async () => {
       try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get(
-          "https://sstaxmentors-server.vercel.app/user/home/api/clients-counts",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        setCounts(response.data);
+        const response = await axios.get("http://localhost:8000/api/projects");
+        setProjects(response.data);
       } catch (error) {
-        console.error("Error fetching clients counts:", error);
+        console.error("Error fetching projects:", error);
       }
-    }
-    fetchClientsCounts();
+    };
+
+    fetchProjects();
   }, []);
 
+  const handleFieldVisitClick = (projectId) => {
+    // Placeholder function for handling field visit action
+    navigate("/frontliner/FieldVisit");
+  };
+
   return (
-    <>
-    <div
-      className="bg-gray-100 min-h-screen overflow-hidden"
-      style={{ overflowX: "hidden", overflowY: "hidden" }}
-    >
-      <style>
-        {`
-          .main-card {
-            color: #fff;
-            padding: 40px;
-            background-size: cover;
-            background-position: center;
-          }
-          
-          .main-card h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-          }
-          
-          .main-card p {
-            font-size: 36px;
-          }
-
-          .card1 {
-            background-image: url(${cardBg1});
-            
-          }
-
-          .card2 {
-            background-image: url(${cardBg2});
-            color: #0440DE;
-          }
-
-          .card3 {
-            background-image: url(${cardBg3});
-            color: #0440DE;
-          }
-
-          .card4 {
-            background-image: url(${cardBg4});
-            
-          }
-        `}
-      </style>
+    <div>
       <NavigationBar />
-      <div className="flex flex-wrap h-screen" style={{ paddingTop: "10px" }}>
-        <div className="w-full p-5">
-          {/* <HomepageCarousel className="mt-10" /> */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 mt-5">
-            <div className="bg-white border rounded-lg shadow-md p-3 mb-4 main-card card1">
-              <h2 className="text-xl font-semibold">
-                Total Count of Reminders
-              </h2>
-              <p className="text-3xl font-bold">{counts.totalReminders}</p>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-6">
+        <div className="w-full max-w-4xl">
+          {projects.map((project) => (
+            <div key={project._id} className="bg-white p-6 rounded-lg shadow-md mb-4">
+              <h2 className="text-xl font-bold mb-2">{project.name}</h2>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <p className="font-semibold">Total Amount: {project.totalAmount}</p>
+                  <p>Department: {project.dept}</p>
+                  <p>Status: {project.status}</p>
+                  <p>Cycle: {project.cycle}</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Sanctioned:</h3>
+                  {project.sanctioned.map((sanction) => (
+                    <div key={sanction._id}>
+                      <p>Amount: {sanction.amount}</p>
+                      <p>Date: {new Date(sanction.date).toLocaleDateString()}</p>
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Due Dates:</h3>
+                  {Object.entries(project.dueDates).map(([key, value]) => (
+                    <div key={value._id}>
+                      <p>{key.replace(/([A-Z])/g, ' $1').trim()}: {new Date(value.date).toLocaleDateString()}</p>
+                      <p>Status: {value.status}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <button
+                onClick={() => handleFieldVisitClick(project._id)}
+                className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Initiate Field Visit
+              </button>
             </div>
-            <div className="bg-white border rounded-lg shadow-md p-3 mb-4 main-card card4">
-              <h2 className="text-xl font-semibold">
-                Total Count of Notifications
-              </h2>
-              <p className="text-3xl font-bold">{counts.totalNotifications}</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-      <StepperWithContent/>
     </div>
-
-    </>
   );
-}
+};
 
-export default HomePageUser;
+export default Projects;
