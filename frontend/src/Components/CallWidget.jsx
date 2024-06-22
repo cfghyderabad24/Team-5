@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const CallWidget = () => {
-  const phoneNumber = "+918801103053"; // Specify the phone number
+  const phoneNumber = "+919115911500"; // Specify the phone number
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {

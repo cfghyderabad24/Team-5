@@ -9,14 +9,14 @@ const Footer = () => {
         {/* Logo and social links container */}
         <div className='flex flex-col-reverse items-center justify-between space-y-12 md:flex-col md:space-y-0 md:items-start'>
           <div className='mx-auto my-6 text-center text-white md:hidden'>
-            Copyright © 2024 All Rights Reserved © SS Tax Mentors
+            Copyright © 2024 All Rights Reserved © CRY
           </div>
           {/* Logo */}
           <div>
             <img src={companyLogoWhite} className='h-20 w-70' alt='' />
           </div>
           <div className='hidden text-white md:block text-sm'>
-            Copyright © 2024 All Rights Reserved © SS Tax Mentors
+            Copyright © 2024 All Rights Reserved © CRY
           </div>
           
         </div>
@@ -25,9 +25,6 @@ const Footer = () => {
           <div className='flex flex-col space-y-3 text-white'>
             <ScrollLink to='testimonials' smooth={true} duration={500} className='hover:text-brightRed'>
               Features
-            </ScrollLink>
-            <ScrollLink to='features' smooth={true} duration={500} className='hover:text-brightRed'>
-              Why Us?
             </ScrollLink>
             <ScrollLink to='services' smooth={true} duration={500} className='hover:text-brightRed'>
               Services
