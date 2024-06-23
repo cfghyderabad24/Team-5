@@ -4,6 +4,7 @@ import { useState,lazy,Suspense } from "react";
 import {BrowserRouter as Router ,Routes,Route} from 'react-router-dom'
 // import Thankyou from "./Pages/Thankyou";
 import Homepage from './Pages/Homepage'
+import FieldVisit from "./Pages/User/FieldVisit";
 
 const Login = lazy(()=> import("./Pages/Login"));
 const DashboardUser = lazy(()=> import("./Pages/User/SideNavBar/Dashboard"));
@@ -65,6 +66,7 @@ function App() {
         <Route path="/viewclient" element={<ClientDetailsInNewTab/>} />
         <Route path="/admin/verify" element={<Verify/>} />
         <Route path="/user/verify" element={<Verify/>} />
+        <Route path="/FieldVisit" element={<FieldVisit />} />
 
       </Routes>
       

@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const FieldVisit = ({projectId}) => {
+const FieldVisit = ({ projectId, onClose }) => {
   const [isFieldVisitChecked, setIsFieldVisitChecked] = useState(false);
 
   const handleFieldVisitChange = () => {
     setIsFieldVisitChecked(!isFieldVisitChecked);
   };
 
-  const handleUpdate = () => {
-    // Logic for handling the update action
-    alert(`Field Visit: ${isFieldVisitChecked}`);
+  const handleUpdate = async () => {
+    try {
+      // Make a POST request to the specified URL
+      const response = await axios.post(`http://localhost:8000/api/projects/field-visit/${projectId}`, {
+        fieldVisitChecked: isFieldVisitChecked,
+      });
+
+      console.log('Field visit updated:', response.data);
+
+      // Close the FieldVisit component upon successful update
+      onClose();
+    } catch (error) {
+      console.error('Error updating field visit:', error);
+    }
   };
 
   return (

@@ -24,28 +24,12 @@ const Dashboard = () => {
                 // { text: "View Clients", icon:<UserMinus />, to: "view-client" }
               ]}
             /> */}
-
-            <SidebarItem
-               icon={<CircleUser size={20}/>}
-              text="Employee"
-              dropdownItems={[
-                { text: "Add Employee", icon:<UserPlus />, to: "add-employee" },
-                { text: "View Employee",icon:<UserMinus />, to: "view-employee" },
-                { text: "Employee Attendance",icon:<UserMinus />, to: "employeeattendance" }
-              ]}
-            />
         {/* <SidebarItem
               icon={<Bell size={20} />}
               text="Notification"
               to="notificationsa"
               
        />  */}
-         <SidebarItem
-              icon={<StickyNote size={20} />}
-              text="Reminder"
-              to="remindersa"
-              
-       />
          {/* <SidebarItem
               icon={<Ticket  size={20} />}
               text="Support Ticket"

@@ -98,29 +98,24 @@ const Dashboard = () => {
             />
             <SidebarItem
               icon={<LayoutDashboard size={20} />}
+              text="Upload Documents"
+              to="Uploade"
+            />
+            <SidebarItem
+              icon={<LayoutDashboard size={20} />}
+              text="Funds Card Visit"
+              to="FundsCard"
+            />
+            <SidebarItem
+              icon={<LayoutDashboard size={20} />}
               text="Evaluation Visit"
               to="EvaluationVisit"
             />
-            {/* My Profile */}
-            {!showPayments && (
-              <SidebarItem
-                icon={<CircleUserRound />}
-                text="My Profile"
-                to="myprofile"
-              />
-            )}
-            {/* My Companies */}
-            {!showPayments && (
-              <SidebarItem
-                icon={<Building2 />}
-                text="My Projects"
-                to="projects"
-                // dropdownItems={[
-                //   { text: "Add Company", to: "add-company" },
-                //   { text: "View Company", to: "view-company" },
-                // ]}
-              />
-            )}
+            <SidebarItem
+              icon={<LayoutDashboard size={20} />}
+              text="Upload End Documents"
+              to="Uploade"
+            />
             {/* Notification
             {!showPayments && (
               <SidebarItem
@@ -158,23 +153,7 @@ const Dashboard = () => {
               ]}
             /> */}
             {/* Add Documents */}
-            {!showPayments && (
-              <SidebarItem
-                icon={<Files size={20} />}
-                text="Documents"
-                dropdownItems={[
-                  { text: "KYC", to: "KYC" },
-                  { text: "GST Registration", to: "gstregistration" },
-                  { text: "Upload Documents", to: "uploaddocuments" },
-                  { text: "IT Returns", to: "itreturns" },
-                  { text: "ROC Filings", to: "rocfilings" },
-                  { text: "License", to: "license" },
-                  { text: "CMA Preparation", to: "cma" },
-                  { text: "GST Notice", to: "gstnotice" },
-                  // { text: "Others", to: "othersa" },
-                ]}
-              />
-            )}
+            
             {/* Add On Services
             {!showPayments && (
               <SidebarItem

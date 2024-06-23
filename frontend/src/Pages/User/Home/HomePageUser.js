@@ -22,7 +22,7 @@ const Projects = () => {
 
   const handleFieldVisitClick = (projectId) => {
     // Placeholder function for handling field visit action
-    navigate("/frontliner/FieldVisit");
+    navigate("/frontliner/FieldVisit/" + projectId);
   };
 
   return (
