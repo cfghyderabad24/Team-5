@@ -22,7 +22,6 @@ const Reminder = lazy(() => import("../Reminder/Reminder"));
 const GSTNotice = lazy(() => import("../../../Components/User/GSTNotice"));
 const GSTReturns = lazy(() => import("../../../Components/User/GSTReturnsUser"));
 const HomePageUser = lazy(() => import("../Home/HomePageUser.js"));
-const Project = lazy(() => import("../projectPage/Project"));
 const FieldVisit=lazy(()=> import("../FieldVisit"))
 const EvaluationVisit=lazy(()=> import("../EvaluationVisit"))
 const FundsCard=lazy(()=> import("../FundsCard"))
@@ -153,7 +152,6 @@ function UserSidebar({ children }) {
               <Route path="/gstreturns" element={<GSTReturns />} />
               <Route path="/gstnotice" element={<GSTNotice />} />
               <Route path="/uploaddocuments" element={<uploadDocuments />} />
-              <Route path="/projects" element={<Project />} />
               <Route path="/FieldVisit" element={<FieldVisit />} />
               <Route path="/FundsCard" element={<FundsCard />} />
               <Route path="/EvaluationVisit" element={<EvaluationVisit />} />
