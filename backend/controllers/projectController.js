@@ -181,3 +181,13 @@ export const sanctionProject = async (req, res) => {
         res.status(400).send(error);
     }
 }
+
+export const getProjectWithFrontliner = async (req, res) => {
+    try {
+        const projects = await Project.find({}).populate('assignedTo').exec();
+        return res.status(200).json(projects);
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}

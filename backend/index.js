@@ -12,6 +12,7 @@ import Frontliner from './models/frontliner.model.js';
 import Project from './models/project.models.js';
 import twilio from 'twilio';
 
+
 dotenv.config();
 
 const app = express();
@@ -105,7 +106,29 @@ const checkDueDates = async () => {
                         from: 'sivanivarada@gmail.com',
                         to: frontliner.email,
                         subject: 'Upcoming Due Date Reminder',
-                        text: `Hello ${frontliner.name},\n\nThis is a reminder that the ${key} for project ${project.name} is due in ${daysDifference} days.\n\nBest regards,\nYour Team`
+                        text: `Hello ${frontliner.name},\n\nThis is a reminder that the ${key} for project ${project.name} is due in ${daysDifference} days.\n\nBest regards,\nYour Team`,
+                        html: `
+                            <html>
+                                <body style="font-family: Arial, sans-serif; background-color: #f6f6f6; margin: 0; padding: 0;">
+    <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <div style="text-align: center; padding: 20px 0;">
+            <img src="./cryLogo.jpeg" alt="Logo" style="width: 100px; margin-bottom: 20px;">
+        </div>
+        <div style="padding: 20px; text-align: left;">
+            <p style="font-size: 16px; color: #333333;">Hello <strong>${frontliner.name}</strong>,</p>
+            <p style="font-size: 16px; color: #333333;">This is a reminder that the <strong>${key}</strong> for project <strong>${project.name}</strong> is due in <strong>${daysDifference}</strong> days.</p>
+            <p style="font-size: 16px; color: #333333;">Best regards,<br>Your Team</p>
+        </div>
+        <div style="text-align: center; padding: 20px 0;">
+            <a href="#" style="display: inline-block; padding: 10px 20px; background-color: #007BFF; color: #ffffff; text-decoration: none; border-radius: 5px;">View Project Details</a>
+        </div>
+        <div style="text-align: center; padding: 20px 0; border-top: 1px solid #dddddd;">
+            <p style="font-size: 12px; color: #999999;">&copy; ${new Date().getFullYear()} Your Company. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+                            </html>
+                        `
                     };
 
                     transporter.sendMail(mailOptions, (error, info) => {
@@ -122,9 +145,13 @@ const checkDueDates = async () => {
 };
 
 // Schedule the task to run every day at midnight
-cron.schedule('* * * * *', () => {
-    checkDueDates();
-    console.log('Cron job executed');
+const task = cron.schedule('* * * * *', () => {
+    checkDueDates().then(() => {
+        console.log('Cron job executed');
+        task.stop(); // Stop the cron job after execution
+    }).catch(error => {
+        console.error('Error executing cron job:', error);
+    });
 });
 
 

@@ -9,7 +9,9 @@ import {
     escalateProject,
     updateProjectsDueDates,
     storeDocuments,
-    sanctionProject
+    sanctionProject,
+    updateFieldVisit,
+    getProjectWithFrontliner
 } from '../controllers/projectController.js';
 
 const router = express.Router();
@@ -42,5 +44,7 @@ router.post("/projects/sanctioned/:id", sanctionProject);
 
 // Update the field visit
 router.post('/projects/field-visit/:id', updateFieldVisit);
+
+router.get('/projects/get-project/populate-fontlier', getProjectWithFrontliner);
 
 export default router;
