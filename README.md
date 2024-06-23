@@ -8,7 +8,7 @@ Sujith Banda
 Venkateshu Dasari
 Akarsh Bajpai
 
-Features
+Features:-
 Streamlined and seamless communication among team members, frontline managers, and partners at CRY.
 Deliver timely notifications via email, SMS, and WhatsApp
 Reduced risk of missed commitments and proactive management of operations
