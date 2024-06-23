@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'; // If you are using axios
+import axios from 'axios';
 
 const FundsCard = () => {
   const [sanctionedAmount, setSanctionedAmount] = useState(null);
@@ -7,10 +7,9 @@ const FundsCard = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Replace with your backend URL
     const fetchData = async () => {
       try {
-        const response = await axios.get(''); // please adjust this
+        const response = await axios.get('http://localhost:5000/api/projects/'); // replace with payment Id!
         setSanctionedAmount(response.data.sanctionedAmount);
       } catch (err) {
         setError(err.message);
